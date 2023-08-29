@@ -16,7 +16,7 @@ export const LayOut = () => {
                     <CustomSelect/>
                     <InputStyled placeholder={'Enter location...'}/>
                     <CustomSelect/>
-                    <button>Search now</button>
+                    <ButtonStyled>Search now</ButtonStyled>
                 </FormStyled>
                 <IconsStyled>
                     <div>icons</div>
@@ -106,4 +106,19 @@ const InputStyled = styled.input`
   outline: none;
   height: 4em;
   border-inline: 1px solid rgba(128, 128, 128, 0.56);
+`
+
+const ButtonStyled = styled.button`
+  background-image: url("https://oir.mobi/uploads/posts/2021-03/1616430087_38-p-zadnii-fon-dlya-saita-44.jpg");
+  border: none;
+  color: white;
+  font-size: 14px;
+  min-height: 4em;
+  min-width: 10em;
+  border-radius: 0 10px 10px 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 `
