@@ -1,12 +1,25 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import styled from 'styled-components';
 
 export const CustomSelect = () => {
+
+    const [value, setValue] = useState('');
+
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+            setValue(e.currentTarget.value)
+    }
+
     return (
         <SelectWrapper>
             <div>
-                <InputStyledForCustomSelect/>
-                <ListStyled>content</ListStyled>
+                <InputStyledForCustomSelect value={value} onChange={onChangeHandler}/>
+                <ListStyled>
+                    <ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                    </ul>
+                </ListStyled>
             </div>
             <ButtonStyledForCustomSelect>
                 up
