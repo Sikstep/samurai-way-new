@@ -1,6 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import styled from 'styled-components';
 import {LayOut} from './LayOut';
 
@@ -13,11 +11,11 @@ export function App() {
 }
 
 const AppWrapper = styled.div`
-  height: 100svh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fafafa;
+  //height: 100svh;
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  //background-color: #fafafa;
 `
 
 export default App;
