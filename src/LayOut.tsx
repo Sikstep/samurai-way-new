@@ -1,8 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import {CustomSelect} from './CustomSelect';
+import {CarOutlined, HomeOutlined, SettingOutlined, StarOutlined, ShoppingOutlined} from '@ant-design/icons';
 
 export const LayOut = () => {
+
+    const icons = [
+        {image: <HomeOutlined style={{color:"white", fontSize:25}}/>, description: 'Apartments' },
+        {image: <ShoppingOutlined style={{color:"white", fontSize:25}}/>, description: 'Shopping'},
+        {image: <CarOutlined style={{color:"white", fontSize:25}}/> , description: 'Cars'},
+        {image: <StarOutlined style={{color:"white", fontSize:25}}/> , description: 'Raiting'},
+        {image: <SettingOutlined  style={{color:"white", fontSize:25}}/> , description: 'Settings'},
+    ]
+
     return (
         <LayOutWrapper>
             <BackgroundTheme>
@@ -19,11 +29,7 @@ export const LayOut = () => {
                     <ButtonStyled>Search now</ButtonStyled>
                 </FormStyled>
                 <IconsStyled>
-                    <div>icons</div>
-                    <div>icons</div>
-                    <div>icons</div>
-                    <div>icons</div>
-                    <div>icons</div>
+                    {icons.map}
                 </IconsStyled>
             </ContentWrapper>
             <VoidDiv>
@@ -96,7 +102,7 @@ const FormStyled = styled.div`
 `
 
 const IconsStyled = styled.div`
-display: flex;
+  display: flex;
   gap: 65px;
 `
 

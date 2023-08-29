@@ -16,6 +16,10 @@ export const CustomSelect = () => {
         setMode(!!e.currentTarget.value)
     }
 
+    const onClickHandler = () => {
+        setMode(perv => !perv)
+    }
+
     return (
         <SelectWrapper>
             <div>
@@ -28,8 +32,8 @@ export const CustomSelect = () => {
                     </ul>
                 </ListStyled>
             </div>
-            <ButtonStyledForCustomSelect>
-                up
+            <ButtonStyledForCustomSelect onClick={onClickHandler}>
+                {mode ? `up` : 'dn'}
             </ButtonStyledForCustomSelect>
         </SelectWrapper>
     );
