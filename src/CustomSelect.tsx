@@ -3,17 +3,24 @@ import styled from 'styled-components';
 
 export const CustomSelect = () => {
 
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState<string>('');
+    const [mode, setMode] = useState<boolean>(false);
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
             setValue(e.currentTarget.value)
+        // if(e.currentTarget.value) {
+        //     setMode(true)
+        // } else {
+        //     setMode(false)
+        // }
+        setMode(!!e.currentTarget.value)
     }
 
     return (
         <SelectWrapper>
             <div>
                 <InputStyledForCustomSelect value={value} onChange={onChangeHandler}/>
-                <ListStyled>
+                <ListStyled mode={mode}>
                     <ul>
                         <li>1</li>
                         <li>2</li>
@@ -49,9 +56,12 @@ const ButtonStyledForCustomSelect = styled.button`
   color: gray;
 `
 
-const ListStyled = styled.div`
+const ListStyled = styled.div<{
+    mode: boolean
+}>`
   position: absolute;
   background-color: white;
   width: 200px;
   border-radius: 0 0 10px 10px;
+  display: ${props => props.mode ? 'block' : 'none'};
 `
