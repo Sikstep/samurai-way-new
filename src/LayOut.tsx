@@ -13,6 +13,8 @@ export const LayOut = () => {
         {image: <SettingOutlined  style={{color:"white", fontSize:25}}/> , description: 'Settings'},
     ]
 
+    const iconslist = icons.map(el => <Icon>{el.image}</Icon>)
+
     return (
         <LayOutWrapper>
             <BackgroundTheme>
@@ -29,7 +31,7 @@ export const LayOut = () => {
                     <ButtonStyled>Search now</ButtonStyled>
                 </FormStyled>
                 <IconsStyled>
-                    {icons.map}
+                    {iconslist}
                 </IconsStyled>
             </ContentWrapper>
             <VoidDiv>
@@ -134,5 +136,22 @@ const ButtonStyled = styled.button`
     color: white;
     background-image: none;
     background-color: #87b8cb;
+  }
+`
+const Icon = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  background-image: url("https://oir.mobi/uploads/posts/2021-03/1616430087_38-p-zadnii-fon-dlya-saita-44.jpg");
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:active {
+    transform: scale(0.96);
   }
 `
