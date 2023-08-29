@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {CustomSelect} from './CustomSelect';
 
 export const LayOut = () => {
     return (
@@ -11,7 +12,19 @@ export const LayOut = () => {
                 header
             </Header>
             <ContentWrapper>
-                content
+                <FormStyled>
+                    <CustomSelect/>
+                    <InputStyled placeholder={'Enter location...'}/>
+                    <CustomSelect/>
+                    <button>Search now</button>
+                </FormStyled>
+                <IconsStyled>
+                    <div>icons</div>
+                    <div>icons</div>
+                    <div>icons</div>
+                    <div>icons</div>
+                    <div>icons</div>
+                </IconsStyled>
             </ContentWrapper>
             <VoidDiv>
                 void
@@ -65,4 +78,32 @@ const BackgroundTheme = styled.div`
 
 const VoidDiv = styled.div`
 height: 100vh;
+`
+
+const FormStyled = styled.div`
+  display: flex;
+  flex-direction: row;
+  min-width: 600px;
+  max-width: max-content;
+  height: 6em;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 4em;
+  border-radius: 10px;
+  padding-right: 1em;
+  gap: 10px;
+  background-color: white;
+`
+
+const IconsStyled = styled.div`
+display: flex;
+  gap: 65px;
+`
+
+const InputStyled = styled.input`
+  text-align: center;
+  border: none;
+  outline: none;
+  height: 4em;
+  border-inline: 1px solid rgba(128, 128, 128, 0.56);
 `
