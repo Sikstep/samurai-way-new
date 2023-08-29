@@ -121,4 +121,12 @@ const ButtonStyled = styled.button`
   background-attachment: fixed;
   cursor: pointer;
   transition: transform 0.2s ease;
+  &:active {
+    transform: scale(0.96);
+  }
+  &:hover {
+    color: white;
+    background-image: none;
+    background-color: #87b8cb;
+  }
 `

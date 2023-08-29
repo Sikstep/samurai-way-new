@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 
 export const CustomSelect = () => {
     return (
-        <div>
+        <SelectWrapper>
             <input type="text"/>
-        </div>
+        </SelectWrapper>
     );
 };
+
+const SelectWrapper = styled.div`
+
+`
