@@ -11,11 +11,11 @@ export function App() {
 }
 
 const AppWrapper = styled.div`
-  //height: 100svh;
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
-  //background-color: #fafafa;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
 `
 
 export default App;
