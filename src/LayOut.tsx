@@ -1,42 +1,72 @@
-import React from 'react';
-import styled from 'styled-components';
-import {CustomSelect} from './CustomSelect';
-import {CarOutlined, HomeOutlined, SettingOutlined, StarOutlined, ShoppingOutlined} from '@ant-design/icons';
+import React, {useState} from 'react';
+import styled from "styled-components";
+import {CustomSelect} from "common/components/customs/CustomSelect";
+import {CarOutlined, HomeOutlined, SettingOutlined, ShoppingOutlined, StarOutlined} from "@ant-design/icons";
+import {Header} from "common/components/header/Header";
+import Video from './assets/video/city.mp4'
+import {motion} from 'framer-motion';
+
 
 export const LayOut = () => {
 
+    const listVariants = {
+        visible: (i: number) => ({
+            opacity: 1,
+            transition: {
+                delay: 1 + (i)
+            }
+        }),
+        hidden: {opacity: 0}
+    }
+
+    const [logo, setLogo] = useState([
+        {id: 1, text: 'Unbiased Place Reviews'},
+        {id: 2, text: 'Traveler Insights Shared'},
+        {id: 3, text: 'Share your place experiences here'},
+    ]);
+
     const icons = [
-        {image: <HomeOutlined style={{color:"white", fontSize:25}}/>, description: 'Apartments' },
-        {image: <ShoppingOutlined style={{color:"white", fontSize:25}}/>, description: 'Shopping'},
-        {image: <CarOutlined style={{color:"white", fontSize:25}}/> , description: 'Cars'},
-        {image: <StarOutlined style={{color:"white", fontSize:25}}/> , description: 'Raiting'},
-        {image: <SettingOutlined  style={{color:"white", fontSize:25}}/> , description: 'Settings'},
+        {image: <HomeOutlined style={{color: "white", fontSize: 25}}/>, description: 'Apartments'},
+        {image: <ShoppingOutlined style={{color: "white", fontSize: 25}}/>, description: 'Shopping'},
+        {image: <CarOutlined style={{color: "white", fontSize: 25}}/>, description: 'Cars'},
+        {image: <StarOutlined style={{color: "white", fontSize: 25}}/>, description: 'Raiting'},
+        {image: <SettingOutlined style={{color: "white", fontSize: 25}}/>, description: 'Settings'},
     ]
 
-    const iconslist = icons.map(el => <Icon>{el.image}</Icon>)
+    const iconsList = icons.map((el, i) => <Icons key={i}>{el.image}</Icons>)
 
     return (
         <LayOutWrapper>
-            <BackgroundTheme>
-
-            </BackgroundTheme>
-            <Header>
-                header
-            </Header>
-            <ContentWrapper>
-                <FormStyled>
-                    <CustomSelect/>
-                    <InputStyled placeholder={'Enter location...'}/>
-                    <CustomSelect/>
-                    <ButtonStyled>Search now</ButtonStyled>
-                </FormStyled>
-                <IconsStyled>
-                    {iconslist}
-                </IconsStyled>
-            </ContentWrapper>
-            <VoidDiv>
-                void
-            </VoidDiv>
+            <FilteredBackground src={Video} autoPlay muted loop/>
+            <Header/>
+            <MainThemeWrapper>
+                <>
+                    <FormStyled>
+                        <CustomSelect/>
+                        <InputStyled placeholder={'Enter a location'}/>
+                        <CustomSelect/>
+                        <ButtonStyled>Search Now</ButtonStyled>
+                    </FormStyled>
+                </>
+                <IconsWRapper>
+                    {iconsList}
+                </IconsWRapper>
+            </MainThemeWrapper>
+            <ContentWRapper>
+                {logo.map((logo, i) => (
+                    <motion.div
+                        key={logo.id}
+                        variants={listVariants}
+                        initial='hidden'
+                        animate='visible'
+                        custom={i}
+                    >
+                        <ContentStyled index={logo.id}>
+                            {logo.text}
+                        </ContentStyled>
+                    </motion.div>
+                ))}
+            </ContentWRapper>
         </LayOutWrapper>
     );
 };
@@ -45,33 +75,10 @@ const LayOutWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-`
+  height: 100vh;
+`;
 
-
-const Header = styled.header`
-  z-index: 999;
-  height: 4em;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.84);
-  display: flex;
-  align-items: center;
-  position: fixed;
-`
-
-const ContentWrapper = styled.div`
-  z-index: 1;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: center;
-  padding-bottom: 50px;
-  background-image: url("https://oir.mobi/uploads/posts/2021-03/1616430087_38-p-zadnii-fon-dlya-saita-44.jpg");
-  background-position: center;
-  background-size: cover;
-`
-
-const BackgroundTheme = styled.div`
+const FilteredBackground = styled.video`
   position: absolute;
   top: 0;
   left: 0;
@@ -80,13 +87,26 @@ const BackgroundTheme = styled.div`
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  z-index: -1;
-  background-image: url("https://img.freepik.com/premium-photo/sheung-wan-hong-kong-02-october-2018-hong-kong-city_328191-6043.jpg?w=1380");
   filter: blur(3px) brightness(80%) grayscale(.70);
-`
+  z-index: -1;
+  object-fit: cover;
+`;
 
-const VoidDiv = styled.div`
-height: 100vh;
+const MainThemeWrapper = styled.div`
+  z-index: 1;
+  min-height: 300px;
+  width: 850px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  padding-bottom: 50px;
+  background-image: url("https://oir.mobi/uploads/posts/2021-03/1616430087_38-p-zadnii-fon-dlya-saita-44.jpg");
+  opacity: 0.9;
+  background-position: center;
+  background-size: cover;
+  margin: 8em auto;
+  border-radius: 20px;
 `
 
 const FormStyled = styled.div`
@@ -104,42 +124,20 @@ const FormStyled = styled.div`
   background-color: white;
 `
 
-const IconsStyled = styled.div`
+const InputStyled = styled.input`
+  height: 4em;
+  text-align: center;
+  outline: none;
+  border: none;
+  border-inline: 1px solid rgba(128, 128, 128, 0.56);
+`
+
+const IconsWRapper = styled.div`
   display: flex;
   gap: 65px;
 `
 
-const InputStyled = styled.input`
-  text-align: center;
-  border: none;
-  outline: none;
-  height: 4em;
-  border-inline: 1px solid rgba(128, 128, 128, 0.56);
-`
-
-const ButtonStyled = styled.button`
-  background-image: url("https://oir.mobi/uploads/posts/2021-03/1616430087_38-p-zadnii-fon-dlya-saita-44.jpg");
-  border: none;
-  color: white;
-  font-size: 14px;
-  min-height: 4em;
-  min-width: 10em;
-  border-radius: 0 10px 10px 0;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  &:active {
-    transform: scale(0.96);
-  }
-  &:hover {
-    color: white;
-    background-image: none;
-    background-color: #87b8cb;
-  }
-`
-const Icon = styled.div`
+const Icons = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 100px;
@@ -155,4 +153,46 @@ const Icon = styled.div`
   &:active {
     transform: scale(0.96);
   }
+`
+
+const ButtonStyled = styled.button`
+  color: white;
+  font-size: 14px;
+  min-height: 4em;
+  min-width: 10em;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  background-image: url("https://oir.mobi/uploads/posts/2021-03/1616430087_38-p-zadnii-fon-dlya-saita-44.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:active {
+    transform: scale(0.96);
+    background-size: cover;
+  }
+
+  &:hover {
+    color: white;
+    background-image: none;
+    background-color: #87b8cb;
+  }
+`
+
+const ContentWRapper = styled.div`
+  z-index: 3;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`
+
+const ContentStyled = styled.div<{ index: number }>`
+  color: white;
+  font-family: 'Merriweather', serif;
+  font-size: ${props => props.index === 1 ? '48px' : props.index === 2 ? '52px' : props.index === 3 ? '64px' : ''}
 `
