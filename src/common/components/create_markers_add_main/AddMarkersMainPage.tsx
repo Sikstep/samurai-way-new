@@ -36,8 +36,22 @@ export const AddMarkersMainPage = () => {
     const {register, handleSubmit} = useForm<LoginFormInputs>();
 
     const onSubmit: SubmitHandler<LoginFormInputs> = (data) => {
+        const newMarker = {id: 2, category: data.category, description: data.marker}
+        // if(city[data.city]) {
+        //     setCity({...city, [data.city]:[...city[data.city], newMarker]})
+        // } else {
+        //     setCity({...city, [data.city]:[newMarker]})
+        // }
+        setCity(prevCity => ({...prevCity,
+            [data.city]: [...(prevCity.hasOwnProperty(data.city) ? prevCity[data.city] : []), {
+                id: 2,
+                category: data.category,
+                description: data.marker
+            }]
+        }))
 
     };
+    console.log(city)
 
     return (
         <>
