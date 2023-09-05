@@ -6,9 +6,9 @@ export const Header = () => {
 
     return (
         <HeaderWrapper>
-            <button>Home</button>
+            <NavLink to={'/'}><button>Home</button></NavLink>
             <button>Return</button>
-            <button>Add marker</button>
+            <AddMarkerBtn to={'/add_marker'}>Add marker</AddMarkerBtn>
         </HeaderWrapper>
     );
 };

@@ -9,8 +9,8 @@ function App() {
     return (
         <AppWrapper>
             <Routes>
-                <Route index path={'/markers_place/'} element={<LayOut/>}></Route>
-                <Route index path={'/markers_place/add_marker'} element={<AddMarkersMainPage/>}></Route>
+                <Route index path={'/'} element={<LayOut/>}></Route>
+                <Route index path={'/add_marker'} element={<AddMarkersMainPage/>}></Route>
             </Routes>
         </AppWrapper>
     );
