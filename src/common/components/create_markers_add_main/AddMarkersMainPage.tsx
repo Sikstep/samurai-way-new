@@ -11,7 +11,27 @@ type LoginFormInputs = {
     marker: string
 }
 
+type CityType = {
+    [city: string]: MarkerType[]
+}
+
+type MarkerType = {
+    id: number
+    category: string
+    description: string
+}
+
 export const AddMarkersMainPage = () => {
+
+    const [city, setCity] = useState<CityType>({
+        ['Санкт-Петербург']: [
+            {id: 1, category: 'cars', description: 'topCars'}
+        ]
+    });
+
+
+
+
 
     const {register, handleSubmit} = useForm<LoginFormInputs>();
 
