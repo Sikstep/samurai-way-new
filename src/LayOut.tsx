@@ -191,6 +191,7 @@ const ContentWRapper = styled.div`
   gap: 10px;
 `
 
+
 const ContentStyled = styled.div<{ index: number }>`
   color: white;
   font-family: 'Merriweather', serif;
