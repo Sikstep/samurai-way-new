@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import {Header} from "../header/Header";
-import styled from "styled-components";
-import {CustomSlider} from "../customs/CustomSlider";
-import {SubmitHandler, useForm} from "react-hook-form";
+import {Header} from '../header/Header';
+import styled from 'styled-components';
+import {SubmitHandler, useForm} from 'react-hook-form';
 
 
 type LoginFormInputs = {
