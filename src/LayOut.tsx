@@ -53,6 +53,7 @@ export const LayOut = () => {
                 </IconsWRapper>
             </MainThemeWrapper>
             <ContentWRapper>
+
                 {logo.map((logo, i) => (
                     <motion.div
                         key={logo.id}
