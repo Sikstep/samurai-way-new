@@ -62,6 +62,7 @@ export const LayOut = () => {
                         animate='visible'
                         custom={i}
                     >
+
                         <ContentStyled index={logo.id}>
                             {logo.text}
                         </ContentStyled>
