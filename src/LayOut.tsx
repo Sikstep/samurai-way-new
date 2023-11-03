@@ -199,3 +199,5 @@ const ContentStyled = styled.div<{ index: number }>`
   font-family: 'Merriweather', serif;
   font-size: ${props => props.index === 1 ? '48px' : props.index === 2 ? '52px' : props.index === 3 ? '64px' : ''}
 `
+
+
