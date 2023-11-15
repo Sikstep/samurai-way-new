@@ -11,6 +11,7 @@ function App() {
             <Routes>
                 <Route index path={'/'} element={<LayOut/>}></Route>
                 <Route index path={'/add_marker'} element={<AddMarkersMainPage/>}></Route>
+                <button>+</button>
             </Routes>
         </AppWrapper>
     );
