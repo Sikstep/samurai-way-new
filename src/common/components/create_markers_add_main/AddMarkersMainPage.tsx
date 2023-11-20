@@ -69,6 +69,7 @@ export const AddMarkersMainPage = () => {
                                {...register('marker')}
                         />
                         <button type={'submit'}>
+
                             addMarker
                         </button>
                     </form>
