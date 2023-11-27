@@ -70,7 +70,7 @@ export const AddMarkersMainPage = () => {
                         />
                         <button type={'submit'}>
 
-                            addMarker
+                            addMarker?
                         </button>
                     </form>
 
